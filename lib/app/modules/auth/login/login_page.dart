@@ -105,7 +105,7 @@ class LoginPage extends StatelessWidget {
                                 const Text('Não tem conta?'),
                                 TextButton(
                                   onPressed: () {
-                                    Navigator.of(context).pushNamed('/register');
+                                    Navigator.of(context).pushReplacementNamed('/register');
                                   },
                                   child: const Text('Cadastre-se'),
                                 ),
