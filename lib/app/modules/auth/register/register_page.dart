@@ -34,21 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    // context.read<RegisterController>().addListener(() {
-    //   final controller = context.read<RegisterController>();
-    //   var success = controller.success;
-    //   var error = controller.error;
-    //   if (success) {
-    //     Navigator.of(context).pop();
-    //   } else if (error != null && error.isNotEmpty) {
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Text(error),
-    //         backgroundColor: Colors.red,
-    //       ),
-    //     );
-    //   }
-    // });
     var defaulListener = DefaultListenerNotifier(
         changeNotifier: context.read<RegisterController>());
     defaulListener.listener(
