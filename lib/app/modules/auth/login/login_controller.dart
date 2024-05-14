@@ -40,10 +40,32 @@ class LoginController extends DefaultChangeNotifier {
       await _userService.forgotPassword(email);
       infoMessage = 'Recuperaçao de senha enviada para seu email';
     } catch (e) {
-      if(e is AuthException) {
+      if (e is AuthException) {
         setError(e.message);
       }
       setError('Erro ao recuperar senha');
+    } finally {
+      hideLoading();
+      notifyListeners();
+    }
+  }
+
+  Future<void> googleLogin() async {
+    try {
+      showLoadingAndResetState();
+      infoMessage = null;
+      notifyListeners();
+      final user = await _userService.googleLogin();
+
+      if (user != null) {
+        success();
+      } else {
+        _userService.googleLogout();
+        setError('Erro ao realizar login com o Google');
+      }
+    } on AuthException catch (e) {
+      _userService.googleLogout();
+      setError(e.message);
     } finally {
       hideLoading();
       notifyListeners();
