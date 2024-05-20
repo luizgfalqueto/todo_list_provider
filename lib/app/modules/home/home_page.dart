@@ -32,6 +32,15 @@ class HomePage extends StatelessWidget {
       ),
       backgroundColor: const Color(0xFFFAFBFE),
       drawer: HomeDrawer(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: context.primaryColor,
+        onPressed: () {},
+        shape: const CircleBorder(),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(
