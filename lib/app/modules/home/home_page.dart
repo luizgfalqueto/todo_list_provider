@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_provider/app/core/ui/them_extensions.dart';
 import 'package:todo_list_provider/app/core/ui/todo_list_icons.dart';
+import 'package:todo_list_provider/app/modules/home/home_controller.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/home_drawer.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/home_filters.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/home_header.dart';
@@ -8,9 +9,17 @@ import 'package:todo_list_provider/app/modules/home/widgets/home_tasks.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/home_week_filter.dart';
 import 'package:todo_list_provider/app/modules/tasks/tasks_module.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final HomeController _homeController;
 
+  HomePage({super.key, required HomeController homeController})
+      : _homeController = homeController;
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   void _goToCreateTask(BuildContext context) {
     // Navigator.of(context).pushNamed('/task/create');
     Navigator.of(context).push(
@@ -30,6 +39,12 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget._homeController.loadTotalTasks();
   }
 
   @override
@@ -73,14 +88,14 @@ class HomePage extends StatelessWidget {
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const IntrinsicHeight(
+                child: IntrinsicHeight(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      HomeHeader(),
+                      const HomeHeader(),
                       HomeFilters(),
-                      HomeWeekFilter(),
-                      HomeTasks()
+                      const HomeWeekFilter(),
+                      const HomeTasks()
                     ],
                   ),
                 ),
