@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_list_provider/app/core/notifier/default_listener_notifier.dart';
 import 'package:todo_list_provider/app/core/ui/them_extensions.dart';
 import 'package:todo_list_provider/app/core/ui/todo_list_icons.dart';
@@ -75,9 +76,12 @@ class _HomePageState extends State<HomePage> {
               size: 20,
             ),
             itemBuilder: (_) => [
-              const PopupMenuItem<bool>(
-                  child: Text('Mostrar tarefas concluídas')),
+              PopupMenuItem<bool>(
+                value: true,
+                child: Text('${widget._homeController.showFinishedTasks ? 'Ocultar' : 'Mostrar'} tarefas concluídas'),
+              ),
             ],
+            onSelected: (value) => context.read<HomeController>().showOrHideFinishedTasks(),
           )
         ],
       ),
