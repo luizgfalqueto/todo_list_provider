@@ -7,4 +7,5 @@ abstract class TasksRepository {
     DateTime end,
   );
   Future<void> checkOrUncheckTask(TaskModel task);
+  Future<int> delete(TaskModel task);
 }

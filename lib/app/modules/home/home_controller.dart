@@ -1,4 +1,5 @@
 import 'package:todo_list_provider/app/core/notifier/default_change_notifier.dart';
+import 'package:todo_list_provider/app/exceptions/database_exception.dart';
 import 'package:todo_list_provider/app/models/task_filter_enum.dart';
 import 'package:todo_list_provider/app/models/task_model.dart';
 import 'package:todo_list_provider/app/models/total_tasks_model.dart';
@@ -119,5 +120,21 @@ class HomeController extends DefaultChangeNotifier {
   void showOrHideFinishedTasks() {
     showFinishedTasks = !showFinishedTasks;
     refreshPage();
+  }
+
+  Future<void> delete(TaskModel task) async {
+    try {
+      showLoadingAndResetState();
+      notifyListeners();
+
+      await _tasksService.delete(task);
+    } on DatabaseException catch (e, s) {
+      print(e);
+      print(s);
+      setError(e.message);
+    } finally {
+      hideLoading();
+      refreshPage();
+    }
   }
 }

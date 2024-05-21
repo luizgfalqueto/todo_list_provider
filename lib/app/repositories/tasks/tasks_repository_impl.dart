@@ -1,4 +1,5 @@
 import 'package:todo_list_provider/app/core/database/sqlite_connection_factory.dart';
+import 'package:todo_list_provider/app/exceptions/database_exception.dart';
 import 'package:todo_list_provider/app/models/task_model.dart';
 import 'package:todo_list_provider/app/repositories/tasks/tasks_repository.dart';
 
@@ -53,5 +54,17 @@ class TasksRepositoryImpl implements TasksRepository {
       finished,
       task.id,
     ]);
+  }
+  
+  @override
+  Future<int> delete(TaskModel task) async {
+    final conn = await _sqliteConnectionFactory.openConnection();
+    int result = await conn.delete('todo', where: 'id = ?', whereArgs: [task.id]);
+
+    if (result == 0) {
+      throw DatabaseException(message: 'Não foi possível remover a task');
+    }
+
+    return result;
   }
 }
