@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todo_list_provider/app/core/auth/auth_provider.dart';
 import 'package:todo_list_provider/app/core/ui/messages.dart';
 import 'package:todo_list_provider/app/core/ui/them_extensions.dart';
+import 'package:todo_list_provider/app/modules/home/home_controller.dart';
 import 'package:todo_list_provider/app/services/user/user_service.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -112,8 +113,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
           ),
           ListTile(
             title: const Text('Sair'),
-            onTap: () {
-              context.read<AuthProvider>().logout();
+            onTap: () async {
+              await context.read<HomeController>().deleteAllTask();
+              await context.read<AuthProvider>().logout();
             },
           )
         ],

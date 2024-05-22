@@ -8,4 +8,5 @@ abstract class TasksRepository {
   );
   Future<void> checkOrUncheckTask(TaskModel task);
   Future<int> delete(TaskModel task);
+  Future<void> deleteAllTasks();
 }

@@ -137,4 +137,8 @@ class HomeController extends DefaultChangeNotifier {
       refreshPage();
     }
   }
+
+  Future<void> deleteAllTask() async {
+    await _tasksService.deleteAllTasks();
+  }
 }
