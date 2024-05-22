@@ -1,9 +1,11 @@
 class TotalTasksModel {
-  int _totalTasks;
+  final int _totalTasks;
   int get totalTasks => _totalTasks;
 
-  int _totalTasksFinished;
+  final int _totalTasksFinished;
   int get totalTasksFinished => _totalTasksFinished;
+
+  int get availableTasks => _totalTasks - _totalTasksFinished;
 
   TotalTasksModel({
     required int totalTasks,

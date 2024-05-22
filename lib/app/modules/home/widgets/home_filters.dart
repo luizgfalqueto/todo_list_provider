@@ -8,6 +8,8 @@ import 'package:todo_list_provider/app/modules/home/home_controller.dart';
 import 'package:todo_list_provider/app/modules/home/widgets/todo_card_filter.dart';
 
 class HomeFilters extends StatelessWidget {
+  const HomeFilters({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,7 +31,7 @@ class HomeFilters extends StatelessWidget {
                 taskFilter: TaskFilterEnum.today,
                 totalTasksModel:
                     context.select<HomeController, TotalTasksModel?>(
-                  (controller) => controller.todayTotalTasks,
+                  (controller) => controller.todayTotalTasks
                 ),
                 selected: context.select<HomeController, TaskFilterEnum>(
                         (value) => value.filterSelected) ==
