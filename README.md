@@ -1,16 +1,39 @@
-# todo_list_provider
 
-A new Flutter project.
+<h1 align="center">
+  <br>
+  <img src="./assets/images/logo.png" width="300">
+  <br>
+  Todo List
+  <br>
+</h1>
 
-## Getting Started
+<h4 align="center">Um simples aplicativo de listagem de tarefas.</h4>
 
-This project is a starting point for a Flutter application.
+<p align="center">
+  <a href="#key-features">Features</a> •
+  <a href="#credits">Creditos</a> •
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+![screenshot](./assets/videos/video.gif)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* Listagem de tarefas com filtro de data
+* Autenticação Firebase com Google Login
+* Armazenamento SQLite 
+* Arquitetura Modular com Provider
+
+
+## Creditos
+
+Este projeto utiliza, dentre outros, os seguintes packages:
+
+- [Provider](https://pub.dev/packages/provider)
+- [SQFlite](https://pub.dev/packages/sqflite)
+- [Firebase](https://pub.dev/packages/firebase_auth)
+
+---
+
+> [Portfolio](https://luizgfalqueto.github.io/) &nbsp;&middot;&nbsp;
+> GitHub [@luizgfalqueto](https://github.com/luizgfalqueto)
+
